@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: radcals-{{ .Values.component }}-{{ .Values.env }}-svc
+  namespace: radcals
+spec:
+  ports:
+    - port: {{.Values.port}}
+      targetPort: {{.Values.serviceTargetPort}}
+      name: http
+  selector:
+    app: radcals-{{ .Values.component }}-{{ .Values.env }}

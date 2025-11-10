@@ -1,0 +1,7 @@
+env: dev
+component: docs
+externalHostname: re-docs.dev.apps.bsci.com
+internalHostname: re-docs.internal.dev.apps.bsci.com
+port: 80
+serviceTargetPort: 80
+readOnlyRootFilesystem: true

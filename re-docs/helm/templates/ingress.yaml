@@ -1,0 +1,21 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: radcals-{{ .Values.component }}-{{ .Values.env }}-ingress
+  namespace: radcals
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+spec:
+  ingressClassName: internal-ingress
+  rules:
+    - host: {{.Values.internalHostname}}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: radcals-{{ .Values.component }}-{{ .Values.env }}-svc
+                port:
+                  number: {{.Values.port}}
